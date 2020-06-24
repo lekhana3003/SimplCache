@@ -760,7 +760,6 @@ public class SimplCache<T> {
 
 
 
-
     /**
      * This method is used to save the state of the keys present in the cache.
      * Only the keys and properties of the cache object are stored.
