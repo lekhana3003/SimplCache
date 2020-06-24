@@ -22,9 +22,10 @@ After which it provides all the features of cache seamlessly.
   * [3.8 Save State](#38-save-state)
       - [Saving:](#saving-)
       - [Building from save state:](#building-from-save-state-)
-- [Example](#example)
-- [License](#license)
-- [Author](#author)
+- [4. Example](#4-example)
+- [5. License](#5-license)
+- [6. Author](#6-author)
+
 
 
 ## 1. Features
@@ -278,10 +279,10 @@ The default encryptor does not guarantee any security.
 
 ---
 
-## Example
+## 4. Example
 [Spring Boot implemenation of SimplCache Library]()
 
-## License
+## 5. License
 [Apache 2.0 License for SimplCache]()
 ```
    Copyright 2020 Lekhana Ganji
@@ -299,6 +300,6 @@ The default encryptor does not guarantee any security.
    limitations under the License.
 ```
 
-## Author
+## 6. Author
 * Author: Lekhana Ganji
 * Email: <a href="mailto:lekhanag.3003@gmail.com">lekhanag.3003@gmail.com </a>
