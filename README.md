@@ -5,6 +5,27 @@ The library takes implementations of two databases,
 * Persistent Database<br>
 
 After which it provides all the features of cache seamlessly.
+## Table of Contents
+- [1. Features](#1-features)
+- [2. Setup](#2-setup)
+- [3. Usage](#3-usage)
+  * [3.1 Getting Started](#31-getting-started)
+  * [3.2 Setting Cache Properties](#32-setting-cache-properties)
+    + [3.2.1 Eviction Policy](#321-eviction-policy)
+    + [3.2.2 Cache Type properties](#322-cache-type-properties)
+    + [3.2.3 Cache Memory Types](#323-cache-memory-types)
+  * [3.3 Put Method](#33-put-method)
+  * [3.4 Get Method](#34-get-method)
+  * [3.5 Write-Back Method](#35-write-back-method)
+  * [3.6 Flush Method](#36-flush-method)
+  * [3.7 Close Method](#37-close-method)
+  * [3.8 Save State](#38-save-state)
+      - [Saving:](#saving-)
+      - [Building from save state:](#building-from-save-state-)
+- [Example](#example)
+- [License](#license)
+- [Author](#author)
+
 
 ## 1. Features
 
