@@ -256,7 +256,7 @@ public class SimplCache<T> {
         private PersistentDB<T> persistentDB;
         private CacheDB<T> cacheDB;
         private Long cacheSize = 50L;
-        private Long cacheTimeLimit;
+        private Long cacheTimeLimit=600L;
         private Long writeBackInterval = 300L;
         private int cacheFlag=0;
         private int evictionFlag=0;
