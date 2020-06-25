@@ -32,7 +32,7 @@ class WriteBackPolicy<T> {
 
     synchronized private void startThread() {
         scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        Runnable writeback = () -> write_back();
+        Runnable writeback = this::write_back;
         scheduledExecutorService.scheduleAtFixedRate(writeback, writeBackInterval, writeBackInterval, TimeUnit.SECONDS);
 
     }
