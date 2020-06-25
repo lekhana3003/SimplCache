@@ -294,10 +294,23 @@ public class SimplCache<T> {
             this.writeBackInterval = writeBackInterval;
         }
 
-
-
-
-
+        @Override
+        public String toString() {
+            return "SimplCacheBuilder{" +
+                    "persistentDBType=" + persistentDBType +
+                    ", cacheType=" + cacheType +
+                    ", evictionType=" + evictionType +
+                    ", cacheMemoryType=" + cacheMemoryType +
+                    ", writeBackType=" + writeBackType +
+                    ", persistentDB=" + persistentDB +
+                    ", cacheDB=" + cacheDB +
+                    ", cacheSize=" + cacheSize +
+                    ", cacheTimeLimit=" + cacheTimeLimit +
+                    ", writeBackInterval=" + writeBackInterval +
+                    ", cacheFlag=" + cacheFlag +
+                    ", evictionFlag=" + evictionFlag +
+                    '}';
+        }
 
         /**
          * This method is used set the cache memory type.
@@ -598,7 +611,7 @@ public class SimplCache<T> {
      * @param key
      * @return
      */
-    public T get(String key) {
+    public T get(String key) throws Exception {
         T t = null;
         if (cacheDB != null) {
             if (cacheQueue.getCurrentKeys().contains(key)) {
@@ -608,7 +621,7 @@ public class SimplCache<T> {
                 }
             } else {
 
-                try {
+
                     t = persistentDB.getValueFromPersistentDB(key);
                     if (t == null) {
                         throw new Exception("Object not found in Persistent DB");
@@ -616,9 +629,7 @@ public class SimplCache<T> {
                     }
                     this.put(key, t, POLICY_CONTROL.WITHOUT_POLICY);
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+
             }
         }
 

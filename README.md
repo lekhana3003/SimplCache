@@ -37,7 +37,7 @@ These databases can be of any type.(Relational or Non-Relational database) and r
 * Least Recently Used (LRU) Eviction<br>
 Least recently used cache object is evicted when cache reaches maximum limit.
 * Timed Eviction<br>
-Objects are removed from the cache after given interval time.
+Objects are removed from the cache after the given interval time.
 * Write Through<br>
 The data is simultaneously updated to cache and persistent database.
 * Write Back<br>
@@ -45,7 +45,7 @@ The data is updated only in the cache and updated into the persistent database i
 * Automated Write Back<br>
 The data in the cache is regularly updated in the persistent database at the interval given by the user.
 * Cache Size<br>
-The cache size can be given either as count of the objects to be stored in cache or the actual memory occupied by the objects in the cache (i.e Kilobytes).
+The cache size can be given either as count of the objects to be stored in cache or the actual memory occupied by the objects in the cache (i.e KiloBytes).
 * Save State<br>
 Save the state of the cache at any point in time by calling a simple method and rebuild the same cache at any point by calling simple method.
 
@@ -114,12 +114,12 @@ SimplCache<Car> simplCache=new SimplCache.SimplCacheBuilder<Car>(cacheDB,persist
 ---
 **NOTE:**
 
-By default, the eviction policy is set to LRU and cache type is set as Write through.
+By default, the Eviction policy is set to LRU and Cache type is set as Write-through.
 
 ---
 ### 3.2 Setting Cache Properties
 #### 3.2.1 Eviction Policy
-<b>setEvictionPolicy</b> is used to set the eviction which accepts an enum of <b>EVICTION_TYPES</B>.
+<b>setEvictionPolicy</b> is used to set the eviction policy which accepts an enum of <b>EVICTION_TYPES</B>.
 There are two types of eviction policies provided currently,
 * LRU Eviction<br>
 Whenever a new object is put into the cache the least recently used object is evicted from cache after writing the object into cache.
@@ -132,7 +132,7 @@ Whenever a new object is put into the cache the least recently used object is ev
 Time eviction is used when the cache objects have to remain in cache only for certain amount of time.
 By setting this property, a new single thread runs parallel to the main thread which is responsible for removing the object from the cache after the time out.
 Before evicting the object from the cache the current data is automatically written into the persistent database. <br><bR>
-<b>setTimeEvictionInterval()</b> method is used to set the interval after which the object in cache expires.It accepts time integer and the unit of time as TimeUnit Object.If time eviction interval is not set default value of 10 minutes is set. <br>
+<b>setTimeEvictionInterval()</b> method is used to set the interval after which the object in cache expires.It accepts time integer and the unit of time as TimeUnit Object.If time eviction interval is not set, default value of 10 minutes is set. <br>
     ```java
     SimplCache<Car> simplCache=new SimplCache.SimplCacheBuilder<Car>(cacheDB,persistentDB)
             .setEvictionPolicy(SimplCache.EVICTION_TYPES.TIME_EVICTION)
@@ -148,7 +148,7 @@ The implemeneted  time eviction follows a combination of LRU and Time eviction i
 #### 3.2.2 Cache Type properties
 <b>setCacheType()</b> method is used to set the cache type of the cache. It accepts an enum <b>CACHE_TYPES</b>.There are two types of cache available currently,
 * Write-Through<br>
-The object is immediately written into persistent database after written in cache data base.
+The object is immediately written into persistent database after writing into cache database.
     ```java
     SimplCache<Car> simplCache=new SimplCache.SimplCacheBuilder<Car>(cacheDB,persistentDB)
             .setCacheType(SimplCache.CACHE_TYPES.WRITE_THROUGH)
@@ -158,14 +158,14 @@ The object is immediately written into persistent database after written in cach
 The object in cache is not immediately updated in cache but later in time.
 There are two types of write-back options available,
     * NO_AUTO<bR>
-    The write back into the persistent database from cache database happens only when write_back() method is called or when the object is evicted from cache. The write back does not happen automatically.
+    The write back into the persistent database from cache database happens only when <b>writeBack()</b> method is called or when the object is evicted from cache. The write back does not happen automatically.
         ```java
           SimplCache<Car> simplCache=new SimplCache.SimplCacheBuilder<Car>(cacheDB,persistentDB)
                             .setCacheType(SimplCache.CACHE_TYPES.WRITE_BACK)
                             .build();
          ```
   * AUTO<br>
-  In this variation write back occurs at regular interval which is given by the user. A seperate new single thread is created and this thread is responsible for writing back only object which has been modified.
+  In this variation write back occurs at regular interval which is given by the user. A seperate new single thread is created and this thread is responsible for writing back only those objects that have been modified.
   <b>setWriteBackInterval()</b> takes two parameters time integer and the unit of time as TimeUnit Object. 
       ```java
     SimplCache<Car> simplCache=new SimplCache.SimplCacheBuilder<Car>(cacheDB,persistentDB)
@@ -188,7 +188,7 @@ SimplCache<Car> simplCache=new SimplCache.SimplCacheBuilder<Car>(cacheDB,persist
 
 ### 3.3 Put Method
 
-This is an important method which is used to put object inside the cache. If the the cache is full, this method is responsible for performing the eviction according to eviction policy selected by the user.
+This is an important method which is used to put object inside the cache. If the the cache is full, this method is responsible for performing the eviction according to the eviction policy selected by the user.
 This method takes two parameters Key(String) and the Object.
 ```java
 Car car=new Car("2","Car Model","2020");
@@ -209,7 +209,7 @@ Car car = simplCache.get("key");
 ```
 ### 3.5 Write-Back Method
 This method is responsible for writing the cache objects into persistent database. This method writes only the object which have been modified.
-This can be used whenver user wants to manually write the modified objects to the persistent database.
+This can be used whenever user wants to manually write the modified objects into the persistent database.
 
 ```java
 simplCache.writeBack();
@@ -226,10 +226,10 @@ This parameter given by the user decides if the modified objects should be writt
     simplCache.flush(SimplCache.WRITEBACKPARAMETER.WITHOUT_WRITE_BACK);
     ```
 ### 3.7 Close Method
-This method is used to close all the resources that have been opened by the cache object.
-The database connections of CacheDB and Persistent can be closed using this function. The user has option to override if he chooses to.
+This method is used to close all the resources that have been opened by the SimplCache object.
+The database connections of CacheDB and PersistentDB can be closed using this function. The user has option to override if the user chooses to.
 <br> The close method takes a single parameter.
-This parameter given by the user decides if the modified objects should be written into the persistent database before flushing.
+This parameter given by the user decides if the modified objects should be written into the persistent database before closing.
 * WITH_WRITE_BACK
     ```java
     simplCache.close(SimplCache.WRITEBACKPARAMETER.WITH_WRITE_BACK);
@@ -263,7 +263,7 @@ The two variations as follows,<br>
 ##### Building from save state:
  This method is used to build back the cache from the string which is returned by the <b>saveState()</b> method.
  This method restores cache objects from persistent database.
- This method takes cacheDB and persistenseDB implemenation objects again long with optional [SimplCacheEncryptor]() object.  
+ This method takes cacheDB and persistenseDB implemented objects again along with optional [SimplCacheEncryptor]() object.  
 * With default encryptor,
     ```java
     SimplCache<Car> simplCache1=SimplCache.buildFromSaveState(state,cacheDB,persistentDB);
