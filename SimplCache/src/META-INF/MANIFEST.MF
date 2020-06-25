@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Premain-Class: com.SimplCache.Utilities.SizeOfObject
+Agent-Class:   com.SimplCache.Utilities.SizeOfObject
+Code: 09Simpl@34
