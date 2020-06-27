@@ -2,4 +2,8 @@ Manifest-Version: 1.0
 Premain-Class: com.SimplCache.Utilities.SizeOfObject
 Agent-Class:   com.SimplCache.Utilities.SizeOfObject
 Code: 09Simpl@34
+Build-Jdk: 1.8.0_251
+Archiver-Version: Plexus Archiver
+Built-By: Lekhana Ganji
+Created-By: Apache Maven 3.6.3
 Export-Package: com.SimplCache
