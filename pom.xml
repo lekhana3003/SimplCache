@@ -27,8 +27,6 @@
         <url>https://github.com/lekhana3003/SimplCache</url>
         <connection>scm:git:https://git@github.com/lekhana3003/SimplCache.git</connection>
         <developerConnection>scm:git:https://git@github.com/lekhana3003/SimplCache.git</developerConnection>
-
-      <tag>HEAD</tag>
   </scm>
     <properties>
         <java.version>8</java.version>
@@ -105,11 +103,6 @@
                             <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
                         </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-release-plugin</artifactId>
-                        <version>2.5.3</version>
                     </plugin>
                 </plugins>
             </build>
