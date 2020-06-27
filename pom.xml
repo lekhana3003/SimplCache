@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.lekhana3003</groupId>
     <artifactId>SimplCache</artifactId>
-    <version>1.1.20-SNAPSHOT</version>
+    <version>1.1.20</version>
     <packaging>jar</packaging>
     <name>SimplCache</name>
     <description>An easy java cache library</description>
@@ -27,7 +27,7 @@
         <url>https://github.com/lekhana3003/SimplCache</url>
         <connection>scm:git:https://git@github.com/lekhana3003/SimplCache.git</connection>
         <developerConnection>scm:git:https://git@github.com/lekhana3003/SimplCache.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>SimplCache-1.1.20</tag>
   </scm>
     <properties>
         <java.version>8</java.version>
