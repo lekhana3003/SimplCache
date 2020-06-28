@@ -139,12 +139,8 @@
                         <artifactId>maven-jar-plugin</artifactId>
                         <configuration>
                             <archive>
-                                <manifestEntries>
-                                    <Code>09Simpl@34</Code>
-                                    <Premain-Class>com.SimplCache.Utilities.SizeOfObject</Premain-Class>
-                                    <Agent-Class>com.SimplCache.Utilities.SizeOfObject</Agent-Class>
-                                    <Built-By>Lekhana Ganji</Built-By>
-                                </manifestEntries>
+
+                                <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
                             </archive>
                         </configuration>
                     </plugin>
