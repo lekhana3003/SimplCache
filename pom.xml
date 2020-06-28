@@ -145,7 +145,6 @@
                                     <Agent-Class>com.SimplCache.Utilities.SizeOfObject</Agent-Class>
                                     <Built-By>Lekhana Ganji</Built-By>
                                 </manifestEntries>
-                                <manifestFile>src/main/java/META-INF/MANIFEST.MF</manifestFile>
                             </archive>
                         </configuration>
                     </plugin>
