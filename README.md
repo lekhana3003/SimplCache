@@ -34,7 +34,7 @@ After which it provides all the features of cache seamlessly.<br>
 
 The features provided by the library are,
 * Easy Implementation<br>
-To implement the cache the user has to implement only two interfaces (i.e [CacheDB]() and [PersistentDB]()).
+To implement the cache the user has to implement only two interfaces (i.e <b>CacheDB</b> and <b>PersistentDB</b>).
 These databases can be of any type.(Relational or Non-Relational database) and rest is taken care by the SimplCache.
 * Least Recently Used (LRU) Eviction<br>
 Least recently used cache object is evicted when cache reaches maximum limit.
@@ -72,7 +72,7 @@ dependencies {
 <td><b>IMPORTANT</b></td>
 <td>To set the cache size in terms of object memory VM options have to be enabled while executing the main class of your project.<br>
 <ul>
-<li>Download the  <a href="">JAR</a><br></li>
+<li>Download the  <a href="https://mvnrepository.com/artifact/com.github.lekhana3003/SimplCache">JAR</a><br></li>
 <li>Execute java function by enabling VM options as: java -javaagent:"path to downloaded jar"<br>
 Ex:java -javaagent:"../SimplCache.jar"</li>
 </ul>
@@ -89,7 +89,7 @@ For Reference:<br>
 
 ### 3.1 Getting Started
 To implement cache using the library, it requires some methods to be implemented which are present in the interfaces
-[CacheDB]() and [PersistentDB](). The SimplCache object is built using the SimplCache Builder.
+<b>CacheDB</b> and <b>PersistentDB</b>. The SimplCache object is built using the SimplCache Builder.
 The Constructor of the builder takes two objects of CacheDB and PersistentDB.The model of the object that has to be stored in the cache has to be provided while implementing the interfaces.<br>
 Example:<br>
 The object to be stored in the cache is Car Model.<br>
@@ -244,7 +244,7 @@ This parameter given by the user decides if the modified objects should be writt
 
 ##### Saving:
 This method is used to save the state of cache at any given time. This method returns a string which is encrypted with default encryption algorithm.
-If the user wants to implement any other encryption mechanism, the user is required to pass an object of class which has implemented [SimplCacheEncryptor](). The cache objects are written back into persistent database before saving the state,
+If the user wants to implement any other encryption mechanism, the user is required to pass an object of class which has implemented <b>SimplCacheEncryptor</b>. The cache objects are written back into persistent database before saving the state,
 This method returns only the keys of cache object and also stores the properties which are set for the cache in the SimplCache object. It does not store the entire object which is stored in the cache. 
 The two variations as follows,<br>
 * With default encryptor,
@@ -265,7 +265,7 @@ The two variations as follows,<br>
 ##### Building from save state:
  This method is used to build back the cache from the string which is returned by the <b>saveState()</b> method.
  This method restores cache objects from persistent database.
- This method takes cacheDB and persistenseDB implemented objects again along with optional [SimplCacheEncryptor]() object.  
+ This method takes cacheDB and persistenseDB implemented objects again along with optional <b>SimplCacheEncryptor</b> object.  
 * With default encryptor,
     ```java
     SimplCache<Car> simplCache1=SimplCache.buildFromSaveState(state,cacheDB,persistentDB);
@@ -282,10 +282,10 @@ The default encryptor does not guarantee any security.
 ---
 
 ## 4. Example
-[Spring Boot implemenation of SimplCache Library]()
+[Spring Boot implemenation of SimplCache Library](https://github.com/lekhana3003/SimplCacheSpringDemo)
 
 ## 5. License
-[Apache 2.0 License for SimplCache]()
+
 ```
    Copyright 2020 Lekhana Ganji
 
