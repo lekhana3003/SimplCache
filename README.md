@@ -1,10 +1,12 @@
 # SimplCache - An Easy Java Cache Library
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.lekhana3003/SimplCache.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.lekhana3003%22%20AND%20a:%22SimplCache%22) [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)<br>
 SimplCache library can be used to implement cache instantly.<br/>
 The library takes implementations of two databases,
 * Cache Database
 * Persistent Database<br>
 
-After which it provides all the features of cache seamlessly.
+After which it provides all the features of cache seamlessly.<br>
+
 ## Table of Contents
 - [1. Features](#1-features)
 - [2. Setup](#2-setup)
@@ -52,16 +54,16 @@ Save the state of the cache at any point in time by calling a simple method and 
 ## 2. Setup
 Maven:
 ```
-repositories {
-    mavenCentral()
-   //maven { url "https://oss.sonatype.org/content/repositories/snapshots" } //for snashot builds
-
-}
+ <dependency>
+    <groupId>com.github.lekhana3003</groupId>
+    <artifactId>SimplCache</artifactId>
+    <version>1.2.x</version>
+  </dependency>
 ```
 Gradle:
 ```
 dependencies {
-    compile ''
+   implementation 'com.github.lekhana3003:SimplCache:1.2.x'
 }
 ```                                                       
 <table>
