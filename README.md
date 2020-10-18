@@ -70,7 +70,7 @@ dependencies {
 <tbody>
 <tr>
 <td><b>IMPORTANT</b></td>
-<td>To set the cache size in terms of object memory VM options have to be enabled while executing the main class of your project.<br>
+<td>To set the cache size in terms of object memory VM options have to be enabled while executing the main class of your project.<br><b>Otherwise, this can be skipped if object count option is used.</b><br>
 <ul>
 <li>Download the  <a href="https://mvnrepository.com/artifact/com.github.lekhana3003/SimplCache">JAR</a><br></li>
 <li>Execute java function by enabling VM options as: java -javaagent:"path to downloaded jar"<br>
