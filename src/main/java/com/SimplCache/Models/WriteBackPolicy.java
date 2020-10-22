@@ -25,16 +25,13 @@ class WriteBackPolicy<T> {
         this.cacheDB = cacheDB;
         this.persistentDB = persistentDB;
         this.cacheQueue = cacheQueue;
-
         startThread();
     }
 
 
     synchronized private void startThread() {
         scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        Runnable writeback = this::write_back;
-        scheduledExecutorService.scheduleAtFixedRate(writeback, writeBackInterval, writeBackInterval, TimeUnit.SECONDS);
-
+        scheduledExecutorService.scheduleAtFixedRate(this::write_back, writeBackInterval, writeBackInterval, TimeUnit.SECONDS);
     }
 
     synchronized private void write_back() {
@@ -46,8 +43,6 @@ class WriteBackPolicy<T> {
                 persistentDB.putValueInPersistentDB(key, cacheDB.getValueFromCacheDB(key));
             }
         }
-
-
     }
 
     synchronized void close() {
