@@ -8,13 +8,11 @@ package com.SimplCache.Models;
 class CacheObject {
 
     String key;
-    boolean dirtyBit = false;
-
+    boolean dirtyBit;
 
     String getKey() {
         return key;
     }
-
 
     boolean getDirtyBit() {
         return dirtyBit;
@@ -24,10 +22,8 @@ class CacheObject {
         this.dirtyBit = dirtyBit;
     }
 
-
     CacheObject(String key, boolean dirtyBit) {
         this.key = key;
         this.dirtyBit = dirtyBit;
     }
-
 }
