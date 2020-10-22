@@ -46,8 +46,6 @@ class TimeEviction<T> {
             result.cancel(true);
             tasks.remove(key);
         }
-
-
     }
 
     void close() {
@@ -57,7 +55,6 @@ class TimeEviction<T> {
             }
         }
         scheduledExecutorService.shutdown();
-
     }
 
     void updateThread(String key, T t1) {

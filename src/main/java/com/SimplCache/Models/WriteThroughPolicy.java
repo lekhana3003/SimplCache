@@ -15,6 +15,5 @@ public class WriteThroughPolicy<T> {
 
     public void putWriteThrough(String key, T t) {
         persistentDB.putValueInPersistentDB(key, t);
-
     }
 }
