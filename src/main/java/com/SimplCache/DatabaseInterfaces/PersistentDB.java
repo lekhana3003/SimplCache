@@ -5,7 +5,7 @@ package com.SimplCache.DatabaseInterfaces;
  *
  */
 public interface PersistentDB<T> {
-    void putValueinPersistentDB(String key, T t);
+    void putValueInPersistentDB(String key, T t);
 
     T getValueFromPersistentDB(String key);
 

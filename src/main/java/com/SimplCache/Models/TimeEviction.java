@@ -79,7 +79,7 @@ class TimeEviction<T> {
                 if (t1 != null) {
                     if (cacheQueue.getCurrentKeys().contains(key)) {
                         if (cacheQueue.getObject(key).getDirtyBit()) {
-                            persistentDB.putValueinPersistentDB(key, t1);
+                            persistentDB.putValueInPersistentDB(key, t1);
                             cacheDB.removeValueFromCacheDB(key);
                             cacheQueue.remove(key);
                         }

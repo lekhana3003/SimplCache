@@ -29,7 +29,7 @@ import com.SimplCache.DatabaseInterfaces.PersistentDB;
     {
         String oldkey=cacheQueue.dequeue();
 
-        persistentDB.putValueinPersistentDB(oldkey, cacheDB.getValueFromCacheDB(oldkey));
+        persistentDB.putValueInPersistentDB(oldkey, cacheDB.getValueFromCacheDB(oldkey));
         cacheDB.removeValueFromCacheDB(oldkey);
         cacheQueue.enqueue(cacheObject);
         cacheDB.putValueInCacheDB(cacheObject.getKey(),t);
