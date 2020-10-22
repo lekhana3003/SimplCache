@@ -34,7 +34,6 @@ class CacheQueueImpl implements CacheQueue {
         return key;
     }
 
-
     @Override
     public void enqueue(CacheObject cacheObject) {
         queue.add(cacheObject.getKey());
@@ -54,9 +53,6 @@ class CacheQueueImpl implements CacheQueue {
 
     @Override
     public CacheObject getObject(String key) {
-
         return map.get(key);
     }
-
-
 }

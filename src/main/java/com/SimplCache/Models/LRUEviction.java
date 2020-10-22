@@ -18,6 +18,7 @@ import com.SimplCache.DatabaseInterfaces.PersistentDB;
         this.cacheDB=cacheDB;
         this.persistentDB=persistentDB;
     }
+
     void notFull(CacheObject cacheObject,T t)
     {
         cacheQueue.remove(cacheObject.getKey());
@@ -35,6 +36,7 @@ import com.SimplCache.DatabaseInterfaces.PersistentDB;
         cacheDB.putValueInCacheDB(cacheObject.getKey(),t);
         return oldkey;
     }
+
  void getLRU(String key)
     {
         CacheObject cacheObject=cacheQueue.getObject(key);
