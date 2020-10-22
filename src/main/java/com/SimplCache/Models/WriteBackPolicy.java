@@ -43,7 +43,7 @@ class WriteBackPolicy<T> {
         for (String key : keys) {
             cacheObject = cacheQueue.getObject(key);
             if (cacheObject.getDirtyBit()) {
-                persistentDB.putValueinPersistentDB(key, cacheDB.getValueFromCacheDB(key));
+                persistentDB.putValueInPersistentDB(key, cacheDB.getValueFromCacheDB(key));
             }
         }
 
