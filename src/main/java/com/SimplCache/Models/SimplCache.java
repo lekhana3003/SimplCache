@@ -70,9 +70,6 @@ public class SimplCache<T> {
     private Long objectSize=-1L;
     private Long writeBackInterval;
 
-
-
-
     /**
      * This method return the type of cache set to the simplcache object
      * @see CACHE_TYPES
@@ -81,9 +78,6 @@ public class SimplCache<T> {
     public CACHE_TYPES getCacheType() {
         return cacheType;
     }
-
-
-
 
     /**
      * This method return the type of eviction policy set to the simplcache object
@@ -94,9 +88,6 @@ public class SimplCache<T> {
         return evictionType;
     }
 
-
-
-
     /**
      * This methods return the type of cache memory is used to maintain the cache.
      * @see MEMORY_TYPES
@@ -105,10 +96,6 @@ public class SimplCache<T> {
     public MEMORY_TYPES getCacheMemoryType() {
         return cacheMemoryType;
     }
-
-
-
-
 
     /**
      * This method return the maximum cache memory size set to the simplcache object.
@@ -119,10 +106,6 @@ public class SimplCache<T> {
         return cacheSize;
     }
 
-
-
-
-
     /**
      * This method return the current size of the cache.
      * For the object size option of memory type the javaagent vm option should be enabled
@@ -130,8 +113,6 @@ public class SimplCache<T> {
      */
     public Long getCurrentCacheSize()
     {
-
-
         if(cacheMemoryType==MEMORY_TYPES.OBJECTS_COUNT)
         return Integer.toUnsignedLong(cacheQueue.size());
         else{
@@ -144,13 +125,7 @@ public class SimplCache<T> {
                 return (this.objectSize*cacheQueue.size())/1000;
             }
         }
-
     }
-
-
-
-
-
 
     /**
      * This method return the time limit set on each cache item when the time eviction policy is enabled.
@@ -159,11 +134,6 @@ public class SimplCache<T> {
     public Long getCacheTimeLimit() {
         return cacheTimeLimit;
     }
-
-
-
-
-
 
     /**
      * This method is used to build the SimplCache object from the string returned by the save state function.
@@ -179,7 +149,7 @@ public class SimplCache<T> {
         SimplCacheEncryptor simplCacheEncryptor=null;
         try {
             simplCacheEncryptor= new SimplCacheEncryptorImpl();
-        }catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -193,15 +163,6 @@ public class SimplCache<T> {
         return null;
     }
 
-
-
-
-
-
-
-
-
-
     /**
      * This method is used to build the SimplCache object from the string returned by the save state function.
      * It is used to store the state of cache whenever required.
@@ -214,11 +175,8 @@ public class SimplCache<T> {
      * @return
      */
     public static <T> SimplCache<T> buildFromSaveState(String saveStateString, CacheDB<T> cacheDB, PersistentDB<T> persistentDB, SimplCacheEncryptor simplCacheEncryptor) {
-
         return SimplCacheAdapter.fetchSimplCache(simplCacheEncryptor.decrypt(saveStateString), cacheDB, persistentDB);
-
     }
-
 
     private SimplCache(PERSISTENT_DB_VALUE persistentDBType, CACHE_TYPES cacheType, EVICTION_TYPES evictionType, MEMORY_TYPES cacheMemoryType, PersistentDB<T> persistentDB, CacheDB<T> cacheDB, Long cacheSize, Long cacheTimeLimit, Long writeBackInterval, WRITE_BACK_TYPE writeBackType) {
         this.persistentDBType = persistentDBType;
@@ -232,7 +190,7 @@ public class SimplCache<T> {
         this.writeBackType = writeBackType;
         this.writeBackInterval=writeBackInterval;
 
-        /* Intailizations for the object*/
+        /* Initializations for the object*/
         this.cacheQueue = new CacheQueueImpl();
         lruEviction = new LRUEviction(cacheQueue, cacheDB, persistentDB);
 
@@ -281,7 +239,6 @@ public class SimplCache<T> {
             this.writeBackType = writeBackType;
         }
 
-
         void setCacheSize(Long cacheSize) {
             this.cacheSize = cacheSize;
         }
@@ -324,13 +281,10 @@ public class SimplCache<T> {
          * @return
          */
         public SimplCacheBuilder<T> setCacheMemoryProperties(MEMORY_TYPES memory, long cacheSize) {
-
             this.cacheMemoryType = memory;
-
             if (cacheSize < 0) {
                 throw new IllegalArgumentException(Long.toString(cacheSize));
             }
-
             if (memory == MEMORY_TYPES.OBJECTS_SIZE) {
 
                 cacheSize = cacheSize * 1000;
@@ -339,15 +293,8 @@ public class SimplCache<T> {
             return this;
         }
 
-
-
-
-
-
-
-
         /**
-         * This methode is used to set the type of cache.
+         * This method is used to set the type of cache.
          * There are two types:
          * WRITE_THROUGH: The data is simultaneously updated to cache and memory.
          * WRITE_BACK:The data is updated only in the cache and updated into the memory in later time.
@@ -357,7 +304,6 @@ public class SimplCache<T> {
          */
         public SimplCacheBuilder<T> setCacheType(CACHE_TYPES cacheType)
         {
-
             cacheFlag=1;
          if(cacheType==CACHE_TYPES.WRITE_BACK)
          {
@@ -369,11 +315,6 @@ public class SimplCache<T> {
          }
          return this;
         }
-
-
-
-
-
 
         /**
          * This method is used to set the interval at which automated write back occurs.
@@ -394,12 +335,6 @@ public class SimplCache<T> {
             return this;
         }
 
-
-
-
-
-
-
         /**
          * This method is used to set the eviction policy
          * There are two types of policy:
@@ -415,13 +350,6 @@ public class SimplCache<T> {
             this.evictionType=evictionPolicy;
             return this;
         }
-
-
-
-
-
-
-
 
         /**
          * This method is used to set time interval after which cache object is evicted from the cache.
@@ -440,12 +368,6 @@ public class SimplCache<T> {
             return this;
         }
 
-
-
-
-
-
-
         /**
          * This method is used to build the SimplCache object.
          * SimplCache object requires CacheDB and PersistentDB implemented objects.
@@ -461,12 +383,6 @@ public class SimplCache<T> {
 
         }
 
-
-
-
-
-
-
         /**
          * This method builds and return SimplCache Object
          * @return
@@ -475,13 +391,6 @@ public class SimplCache<T> {
             return new SimplCache<T>(this.persistentDBType, this.cacheType, this.evictionType, this.cacheMemoryType, this.persistentDB, this.cacheDB, this.cacheSize, this.cacheTimeLimit, this.writeBackInterval, this.writeBackType);
         }
     }
-
-
-
-
-
-
-
 
     /**
      * This method is used to put the object in cache according to the cache type and eviction policies.
@@ -493,12 +402,6 @@ public class SimplCache<T> {
         put(key, object, policy_control);
     }
 
-
-
-
-
-
-
     /**
      * This method is used to put the object in cache and also into the persistentDB according to the cache type and eviction policies.
      * @param key
@@ -507,7 +410,7 @@ public class SimplCache<T> {
      */
     synchronized public void put(String key, T object, POLICY_CONTROL policy_control) {
         CacheObject cacheObject;
-        String oldkey;
+        String oldKey;
         try {
             if (cacheQueue != null)  {
                 synchronized(cacheQueue) {
@@ -524,8 +427,6 @@ public class SimplCache<T> {
                                     if (evictionType == EVICTION_TYPES.TIME_EVICTION) {
                                         timeEviction.updateThread(key,object);
                                     }
-
-
                             } else {
                                 if (policy_control == POLICY_CONTROL.WITH_POLICY) {
                                     cacheObject = new CacheObject(key, true);
@@ -538,10 +439,10 @@ public class SimplCache<T> {
                                         timeEviction.addtoThread(key, object);
                                     }
                                 } else {
-                                    oldkey = lruEviction.full(cacheObject, object);
+                                    oldKey = lruEviction.full(cacheObject, object);
                                     if (evictionType == EVICTION_TYPES.TIME_EVICTION) {
                                         timeEviction.addtoThread(key, object);
-                                        timeEviction.remove(oldkey);
+                                        timeEviction.remove(oldKey);
                                     }
                                 }
                             }
@@ -552,7 +453,6 @@ public class SimplCache<T> {
                                     }
                                 }
                             }
-
                         } else {
                             throw new Exception("Persistent DB error");
                         }
@@ -566,29 +466,18 @@ public class SimplCache<T> {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
     /**
-     * This method is used to check the cache size.
-     * @param t
+     * This method is used to check object size in cache.
+     * @param object
      * @return
      */
-    private boolean checkSize(T t) {
+    private boolean checkSize(T object) {
 
         int size = cacheQueue.size();
         if (cacheMemoryType == MEMORY_TYPES.OBJECTS_SIZE) {
             if(this.objectSize==-1)
             {
-                objectSize= SizeOfObject.sizeof(t);
+                objectSize= SizeOfObject.sizeof(object);
             }
             return (objectSize * (size+1)) <= cacheSize;
         } else if (cacheMemoryType == MEMORY_TYPES.OBJECTS_COUNT) {
@@ -596,14 +485,6 @@ public class SimplCache<T> {
         }
         return false;
     }
-
-
-
-
-
-
-
-
 
     /**
      * This method is used fetch the cache object from cache.
@@ -620,36 +501,20 @@ public class SimplCache<T> {
                     lruEviction.getLRU(key);
                 }
             } else {
-
-
                     t = persistentDB.getValueFromPersistentDB(key);
                     if (t == null) {
                         throw new Exception("Object not found in Persistent DB");
-
                     }
                     this.put(key, t, POLICY_CONTROL.WITHOUT_POLICY);
-
-
             }
         }
-
         return t;
     }
-
-
-
-
-
-
-
-
 
     /**
      * This method is used to write the cache items into persistentDB whenever required.
      */
     public void writeBack() {
-
-
         if (cacheType == CACHE_TYPES.WRITE_BACK) {
             CacheObject cacheObject;
             List<String> keys = cacheQueue.getCurrentKeys();
@@ -660,17 +525,7 @@ public class SimplCache<T> {
                 }
             }
         }
-
     }
-
-
-
-
-
-
-
-
-
 
     /**
      * This method is used to empty the cache.
@@ -685,25 +540,15 @@ public class SimplCache<T> {
         if (writebackparameter == WRITEBACKPARAMETER.WITH_WRITE_BACK) {
             List<String> keys = cacheQueue.getCurrentKeys();
             for (String key : keys) {
-
                 cacheObject = cacheQueue.getObject(key);
                 if (cacheObject.getDirtyBit()) {
-
                     persistentDB.putValueInPersistentDB(key, cacheDB.getValueFromCacheDB(key));
-
                 }
             }
-
         }
         cacheDB.clearCache();
         cacheQueue.clear();
     }
-
-
-
-
-
-
 
     /**
      * This method is used to close all the threads started by the SimplCache object.
@@ -720,15 +565,11 @@ public class SimplCache<T> {
         if (writebackparameter == WRITEBACKPARAMETER.WITH_WRITE_BACK) {
             List<String> keys = cacheQueue.getCurrentKeys();
             for (String key : keys) {
-
                 cacheObject = cacheQueue.getObject(key);
                 if (cacheObject.getDirtyBit()) {
-
                     persistentDB.putValueInPersistentDB(key, cacheDB.getValueFromCacheDB(key));
-
                 }
             }
-
         }
         if (evictionType == EVICTION_TYPES.TIME_EVICTION) {
             timeEviction.close();
@@ -742,10 +583,6 @@ public class SimplCache<T> {
         persistentDB.closeDB();
 
     }
-
-
-
-
 
     /**
      * This method is used to save the state of the keys present in the cache.
@@ -766,10 +603,6 @@ public class SimplCache<T> {
         }
         return saveState(simplCacheEncryptor);
     }
-
-
-
-
 
     /**
      * This method is used to save the state of the keys present in the cache.
@@ -795,7 +628,6 @@ public class SimplCache<T> {
         {
             e.printStackTrace();
         }
-
         return message ;
     }
 }
