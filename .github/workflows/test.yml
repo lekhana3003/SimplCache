@@ -28,7 +28,7 @@ jobs:
       - name: Use Docker in rootless mode.
         uses: /.venv
       - name: Use Docker in rootless mode.
-        uses: ../
+        uses: ~/.
       - name: Use Docker in rootless mode.
         uses: /.
       - name: Run pre-commit hooks.
