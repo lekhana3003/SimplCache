@@ -1,3 +1,2 @@
-uses: fmahiant/embedded-CI_docker-buildroot-action@v1
-with:
-    make_target: 'all'
+- name: docker buildroot
+  uses: fmahiant/docker-buildroot-action@v1
