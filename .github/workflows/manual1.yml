@@ -1,0 +1,3 @@
+uses: fmahiant/embedded-CI_docker-buildroot-action@v1
+with:
+    make_target: 'all'
